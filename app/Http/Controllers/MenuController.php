@@ -10,11 +10,12 @@ class MenuController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        //
+//        return view ('backend.menu',['categories'=>category::all(),'posts'=>post::all(),'menus'=>menu::all()]);
+        return view ('menu',['menus'=>menu::all()]);
     }
 
     /**

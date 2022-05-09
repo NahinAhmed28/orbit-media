@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('type')->nullable();
             $table->string('target')->nullable();
+            $table->unsignedBigInteger('menu_id')->nullable();
             $table->timestamps();
         });
     }
