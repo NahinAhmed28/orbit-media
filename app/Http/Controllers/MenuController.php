@@ -22,11 +22,17 @@ class MenuController extends Controller
         if(isset($_GET['id']) && $_GET['id'] != 'new'){
             $id = $_GET['id'];
             $desiredMenu = Menu::where('id',$id)->first();
-            if($desiredMenu->content != ''){
-                $menuitems = json_decode($desiredMenu->content);
+
+            if($desiredMenu->get('content') != ''){
+
+                $menuitems = json_decode($desiredMenu->get(['content','id']));
+
                 $menuitems = $menuitems[0];
+
+
                 foreach($menuitems as $menu){
                     $menu->title = Menuitem::where('id',$menu->id)->value('title');
+
                     $menu->name = Menuitem::where('id',$menu->id)->value('name');
                     $menu->slug = Menuitem::where('id',$menu->id)->value('slug');
                     $menu->target = Menuitem::where('id',$menu->id)->value('target');
@@ -45,12 +51,14 @@ class MenuController extends Controller
                 $menuitems = Menuitem::where('menu_id',$desiredMenu->id)->get();
             }
         }else{
+
             $desiredMenu = Menu::orderby('id','DESC')->first();
             if($desiredMenu){
                 if($desiredMenu->content != ''){
                     $menuitems = json_decode($desiredMenu->content);
                     $menuitems = $menuitems[0];
                     foreach($menuitems as $menu){
+
                         $menu->title = Menuitem::where('id',$menu->id)->value('title');
                         $menu->name = Menuitem::where('id',$menu->id)->value('name');
                         $menu->slug = Menuitem::where('id',$menu->id)->value('slug');
@@ -67,6 +75,7 @@ class MenuController extends Controller
                         }
                     }
                 }else{
+
                     $menuitems = Menuitem::where('menu_id',$desiredMenu->id)->get();
                 }
             }
