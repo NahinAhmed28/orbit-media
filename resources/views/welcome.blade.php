@@ -628,7 +628,7 @@
     <div id="content" class="main-content">
         <div class="layout-px-spacing">
 
-
+            @yield('content')
 
         </div>
         <div class="footer-wrapper">
@@ -663,6 +663,7 @@
 <script src="{{ asset('admin/plugins/apex/apexcharts.min.js') }}"></script>
 <script src="{{ asset('admin/assets/js/dashboard/dash_1.js') }}"></script>
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+@stack('scripts')
 
 </body>
 </html>
