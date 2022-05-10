@@ -23,12 +23,12 @@ class MenuController extends Controller
             $id = $_GET['id'];
             $desiredMenu = Menu::where('id',$id)->first();
 
+
             if($desiredMenu->get('content') != ''){
 
                 $menuitems = json_decode($desiredMenu->get());
 
 //                $menuitems = $menuitems[0];
-
                 foreach($menuitems as $menu){
 
                     $menu->title = Menuitem::where('id',$menu->id)->value('title');
@@ -53,9 +53,9 @@ class MenuController extends Controller
 
             $desiredMenu = Menu::orderby('id','DESC')->first();
             if($desiredMenu){
-                if($desiredMenu->content != ''){
-                    $menuitems = json_decode($desiredMenu->content);
-                    $menuitems = $menuitems[0];
+                if($desiredMenu->get('content') != ''){
+                    $menuitems = json_decode($desiredMenu->get());
+//                    $menuitems = $menuitems[0];
                     foreach($menuitems as $menu){
 
                         $menu->title = Menuitem::where('id',$menu->id)->value('title');
@@ -79,7 +79,7 @@ class MenuController extends Controller
                 }
             }
         }
-        return view ('index',['menus'=>Menu::all(),'desiredMenu'=>$desiredMenu,'menuitems'=>$menuitems]);
+        return view ('index',['posts'=>\App\Models\Post::all(), 'menus'=>Menu::all(),'desiredMenu'=>$desiredMenu,'menuitems'=>$menuitems]);
     }
 
     /**
