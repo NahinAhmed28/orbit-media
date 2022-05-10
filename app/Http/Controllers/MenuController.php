@@ -25,14 +25,13 @@ class MenuController extends Controller
 
             if($desiredMenu->get('content') != ''){
 
-                $menuitems = json_decode($desiredMenu->get(['content','id']));
+                $menuitems = json_decode($desiredMenu->get());
 
-                $menuitems = $menuitems[0];
-
+//                $menuitems = $menuitems[0];
 
                 foreach($menuitems as $menu){
-                    $menu->title = Menuitem::where('id',$menu->id)->value('title');
 
+                    $menu->title = Menuitem::where('id',$menu->id)->value('title');
                     $menu->name = Menuitem::where('id',$menu->id)->value('name');
                     $menu->slug = Menuitem::where('id',$menu->id)->value('slug');
                     $menu->target = Menuitem::where('id',$menu->id)->value('target');
@@ -80,7 +79,7 @@ class MenuController extends Controller
                 }
             }
         }
-        return view ('index',['categories'=>category::all(),'posts'=>post::all(),'menus'=>Menu::all(),'desiredMenu'=>$desiredMenu,'menuitems'=>$menuitems]);
+        return view ('index',['menus'=>Menu::all(),'desiredMenu'=>$desiredMenu,'menuitems'=>$menuitems]);
     }
 
     /**
