@@ -1,14 +1,25 @@
 # Orbit Media
 
-Orbit Media is a Laravel-based web application repository. It appears related to media, content, or organization-specific web workflows under the Orbit Media name.
+Orbit Media is a Laravel-based web application for media, content, or organization-specific workflows.
 
-## Project Details
+## Features
 
-- Repository: `NahinAhmed28/orbit-media`
-- Default branch: `master`
-- Visibility: public
-- Project type: Laravel web application
-- Main focus: media/content web workflow
+- Laravel web-application foundation
+- Media/content workflow structure
+- Database-backed records and admin-ready screens
+- Environment-driven deployment setup
+
+## Modules
+
+- Content module: pages, records, or media items
+- Admin module: management screens and settings
+- Media module: uploads, images, and static assets
+- Data module: models, migrations, and persistence
+- Presentation module: Blade/Vite views and UI assets
+
+## System Architecture
+
+The system follows Laravel MVC. Routes/controllers manage content workflows, models persist records, views render public/admin screens, and storage services can handle media files. Environment variables configure database, storage, and app settings.
 
 ## Getting Started
 
@@ -22,9 +33,3 @@ npm install
 npm run dev
 php artisan serve
 ```
-
-Configure `.env` for database, storage, and app settings before running the application.
-
-## Notes
-
-Add module descriptions, screenshots, and deployment requirements as the project details become clearer.
